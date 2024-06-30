@@ -7,7 +7,7 @@ let forkingData = undefined;
 
 if (FORK_MAINNET) {
   forkingData = {
-    url: "https://api.avax.network/ext/bc/C/rpcc",
+    url: "https://api.avax.network/ext/bc/C/rpc",
   };
 }
 if (FORK_FUJI) {
@@ -18,27 +18,28 @@ if (FORK_FUJI) {
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.18",
+  solidity: {
+    version: "0.8.19",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
+    },
+  },
   networks: {
     hardhat: {
       gasPrice: 225000000000,
-      chainId: !forkingData ? 43112 : undefined, //Only specify a chainId if we are not forking
+      chainId: !forkingData ? 43112 : undefined, // Only specify a chainId if we are not forking
       forking: forkingData,
     },
     fuji: {
       url: "https://api.avax-test.network/ext/bc/C/rpc",
       gasPrice: 225000000000,
       chainId: 43113,
-      accounts: [process.env.WALLET_PRIVATE_KEY], // we use a .env file to hide our wallets private key
+      accounts: [process.env.WALLET_PRIVATE_KEY].filter(Boolean), // Ensure the private key is set
     },
-    mainnet: {
-      url: "https://api.avax.network/ext/bc/C/rpc",
-      gasPrice: 225000000000,
-      chainId: 43114,
-      accounts: [process.env.WALLET_PRIVATE_KEY],
-    },
+    
   },
-  etherscan: {
-    apiKey: process.env.SNOWTRACE_API_KEY, // we use an .env file to hide our Snowtrace API KEY
-  },
+  
 };
