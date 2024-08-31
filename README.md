@@ -16,7 +16,7 @@ Degen Gaming has chosen the Avalanche blockchain for this project, leveraging it
 8. EmergencyUnpause: This Function used to unpause our transaction when the emergency is resolved.  
 
 ## Video Demonstration
-[Video Demo](https://www.loom.com/share/806a0723d5714644b0ff1cf336740e36?sid=08211ba7-22e9-49e0-a7d4-08fa57e4ac86)
+[Video Demo](https://www.loom.com/share/e9b8a430e8fb429dbb06f4d28f0671a0?sid=c598c944-5511-4310-8cfb-da16eee584a9)
 
 ## Steps to install and run this project
 
